@@ -1,2 +1,1 @@
-# Vue 3 + TypeScript + Vite
-1、后台管理系统持续更新中……
+# Vue 3 + TypeScript + Vite1、后台管理系统持续更新中……【注】参考开源项目 [Geeker-Admin](https://github.com/HalseySpicy/Geeker-Admin)
