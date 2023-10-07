@@ -22,6 +22,7 @@
     "@typescript-eslint/parser": "^6.7.3",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "autoprefixer": "^10.4.16",
     "cz-git": "^1.7.1",
     "czg": "^1.7.1",
     "eslint": "^8.50.0",
@@ -30,6 +31,7 @@
     "eslint-plugin-vue": "^9.17.0",
     "husky": "^8.0.0",
     "lint-staged": "^14.0.1",
+    "postcss": "^8.4.31",
     "stylelint": "^15.10.3",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-prettier": "^9.0.5",
@@ -38,6 +40,7 @@
     "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-config-standard-scss": "^11.0.0",
+    "tailwindcss": "^3.3.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vue-tsc": "^1.8.5"
