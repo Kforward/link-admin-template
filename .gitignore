@@ -13,8 +13,9 @@ dist-ssr
 *.local
 
 pnpm-lock.yaml
-components.d.ts
 package-lock.json
+components.d.ts
+auto-imports.d.ts
 
 # Editor directories and files
 .vscode/*

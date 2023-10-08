@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { VideoCameraFilled, Platform } from "@element-plus/icons-vue";
 
 defineProps<{ msg: string }>();
 
@@ -28,6 +29,13 @@ const count = ref(0);
     in your IDE for a better DX
   </p>
   <p class="read-the-docs hover:bg-violet-600 active:bg-violet-700">Click on the Vite and Vue logos to learn more</p>
+  <el-icon>
+    <i-ep-add-location />
+  </el-icon>
+  <el-icon>
+    <VideoCameraFilled />
+  </el-icon>
+  <Platform />
 </template>
 
 <style scoped>
