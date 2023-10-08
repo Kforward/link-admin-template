@@ -15,3 +15,4 @@ declare interface ViteEnv {
   VITE_API_URL: string;
   VITE_PROXY: [string, string][];
 }
+export {};

@@ -30,6 +30,6 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       cors: true,
       proxy: createProxy(viteEnv.VITE_PROXY)
     },
-    plugins: createVitePlugins()
+    plugins: createVitePlugins(viteEnv)
   };
 });

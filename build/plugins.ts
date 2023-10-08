@@ -1,19 +1,25 @@
 import { PluginOption } from "vite";
+import vue from "@vitejs/plugin-vue";
 import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-import vue from "@vitejs/plugin-vue";
-
+import { createHtmlPlugin } from "vite-plugin-html";
 import { getPath } from "../src/utils/path";
 
-export const createVitePlugins = (): (PluginOption | Array<PluginOption>)[] => {
+/**
+ * 创建 vite 插件
+ * @param viteEnv
+ */
+export const createVitePlugins = (viteEnv): (PluginOption | Array<PluginOption>)[] => {
+  const { VITE_GLOB_APP_TITLE } = viteEnv;
+
   return [
     vue(),
     AutoImport({
       // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
-      imports: ["vue"],
+      // imports: ["vue"],
       // 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
       resolvers: [
         ElementPlusResolver(),
@@ -36,6 +42,12 @@ export const createVitePlugins = (): (PluginOption | Array<PluginOption>)[] => {
     }),
     Icons({
       autoInstall: true
+    }),
+    // 注入变量到html文件
+    createHtmlPlugin({
+      inject: {
+        data: { title: VITE_GLOB_APP_TITLE }
+      }
     })
   ];
 };
