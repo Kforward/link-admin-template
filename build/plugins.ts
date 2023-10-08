@@ -6,13 +6,14 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { createHtmlPlugin } from "vite-plugin-html";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import { getPath } from "../src/utils/path";
 
 /**
  * 创建 vite 插件
  * @param viteEnv
  */
-export const createVitePlugins = (viteEnv): (PluginOption | Array<PluginOption>)[] => {
+export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | Array<PluginOption>)[] => {
   const { VITE_GLOB_APP_TITLE } = viteEnv;
 
   return [
@@ -28,7 +29,7 @@ export const createVitePlugins = (viteEnv): (PluginOption | Array<PluginOption>)
           prefix: "Icon"
         })
       ],
-      dts: getPath("./") + "/auto-imports.d.ts"
+      dts: getPath("./auto-imports.d.ts")
     }),
     Components({
       resolvers: [
@@ -38,7 +39,7 @@ export const createVitePlugins = (viteEnv): (PluginOption | Array<PluginOption>)
           enabledCollections: ["ep"]
         })
       ],
-      dts: getPath("./") + "/components.d.ts"
+      dts: getPath("./components.d.ts")
     }),
     Icons({
       autoInstall: true
@@ -48,6 +49,10 @@ export const createVitePlugins = (viteEnv): (PluginOption | Array<PluginOption>)
       inject: {
         data: { title: VITE_GLOB_APP_TITLE }
       }
+    }),
+    createSvgIconsPlugin({
+      iconDirs: [getPath("src/assets/icons")],
+      symbolId: "icon-[dir]-[name]"
     })
   ];
 };

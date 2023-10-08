@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { VideoCameraFilled, Platform } from "@element-plus/icons-vue";
+import SvgIcon from "@/components/SvgIcon/index.vue";
 
 defineProps<{ msg: string }>();
 
@@ -36,6 +37,7 @@ const count = ref(0);
     <VideoCameraFilled />
   </el-icon>
   <Platform />
+  <SvgIcon name="xianxingfanchuan" />
 </template>
 
 <style scoped>
