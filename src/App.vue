@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import HelloWorld from "@/components/HelloWorld.vue";
+// import HelloWorld from "@/components/HelloWorld.vue";
+import ThreeJS from "@/views/threeJS/index.vue";
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
       <img src="./assets/icons/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <ThreeJS />
 </template>
 
 <style scoped>
