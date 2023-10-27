@@ -1,8 +1,10 @@
 import { createScene } from "./components/scene.js";
 import { createCamera } from "./components/camera.js";
 import { createLights } from "./components/lights.js";
+import { createAxesHelper, createGridHelper } from "./components/helpers";
 // import { createCube } from "./components/cube.js";
-import { createMeshGroup } from "./components/meshGroup.js";
+// import { createMeshGroup } from "./components/meshGroup.js";
+import { Train } from "./components/Train/Train.ts";
 
 import { createControls } from "./systems/controls.js";
 import { createRenderer } from "./systems/renderer.js";
@@ -28,6 +30,9 @@ class World {
     this.#container.append(this.#renderer.domElement);
 
     this.#init();
+
+    // 为场景创建辅助线
+    this.#scene.add(createAxesHelper(), createGridHelper());
   }
 
   #init() {
@@ -47,17 +52,25 @@ class World {
     // cube2.position.set(3, 0, 0);
 
     // 创建 createMeshGroup
-    const meshGroup = createMeshGroup();
+    // const meshGroup = createMeshGroup();
+
+    //
+    const meshTrain = new Train();
 
     // 将 cube 网格添加至动画动画列表中
     // this.#loop.updatables.push(cube);
-    this.#loop.updatables.push(controls, meshGroup);
+
+    // 网格组
+    // this.#loop.updatables.push(controls, meshGroup);
+    this.#loop.updatables.push(controls, meshTrain);
 
     // 添加多个网格对象使用 "," 分割
     // this.#scene.add(cube, cube2, light);
     // this.#scene.add(cube, ambientLight, mainLight);
 
-    this.#scene.add(meshGroup, ambientLight, mainLight);
+    // 将网格组添加至场景中
+    // this.#scene.add(meshGroup, ambientLight, mainLight);
+    this.#scene.add(meshTrain, ambientLight, mainLight);
 
     // 创建 Resizer 控制器
     new Resizer(this.#container, this.#camera, this.#renderer);

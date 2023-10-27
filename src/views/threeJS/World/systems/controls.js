@@ -10,6 +10,8 @@ function createControls(camera, canvas) {
   // 旋转速度
   controls.autoRotateSpeed = 1;
 
+  controls.target.y = 1;
+
   // 限制缩放 - 需要确保 minDistance 不小于 相机的近剪裁平面且 maxDistance 不大于 相机的远剪裁平面
   // controls.minDistance = 5;
   // controls.maxDistance = 20;

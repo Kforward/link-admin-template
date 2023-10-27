@@ -11,11 +11,11 @@ function createLights() {
   const ambientLight = new HemisphereLight(
     "white", // 明亮的天空颜色
     "darkslategrey", // 暗淡的底色
-    5 // 光照强度
+    3 // 光照强度
   );
 
   // 平行光
-  const mainLight = new DirectionalLight("white", 5);
+  const mainLight = new DirectionalLight("white", 2);
 
   // 设置光照位置 灯光从(10,10,10)照向(0,0,0)。
   mainLight.position.set(10, 10, 10);
