@@ -11,6 +11,7 @@ const threeContainerRef = ref("");
 onMounted(() => {
   const world = new World(threeContainerRef.value);
   world.start();
+  // world.render();
 });
 </script>
 
