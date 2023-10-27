@@ -1,7 +1,8 @@
 import { createScene } from "./components/scene.js";
 import { createCamera } from "./components/camera.js";
-import { createCube } from "./components/cube.js";
 import { createLights } from "./components/lights.js";
+// import { createCube } from "./components/cube.js";
+import { createMeshGroup } from "./components/meshGroup.js";
 
 import { createControls } from "./systems/controls.js";
 import { createRenderer } from "./systems/renderer.js";
@@ -41,17 +42,22 @@ class World {
     const { ambientLight, mainLight } = createLights();
 
     // 创建 cube 网格
-    const cube = createCube();
+    // const cube = createCube();
     // const cube2 = createCube();
     // cube2.position.set(3, 0, 0);
 
+    // 创建 createMeshGroup
+    const meshGroup = createMeshGroup();
+
     // 将 cube 网格添加至动画动画列表中
     // this.#loop.updatables.push(cube);
-    this.#loop.updatables.push(controls);
+    this.#loop.updatables.push(controls, meshGroup);
 
     // 添加多个网格对象使用 "," 分割
     // this.#scene.add(cube, cube2, light);
-    this.#scene.add(cube, ambientLight, mainLight);
+    // this.#scene.add(cube, ambientLight, mainLight);
+
+    this.#scene.add(meshGroup, ambientLight, mainLight);
 
     // 创建 Resizer 控制器
     new Resizer(this.#container, this.#camera, this.#renderer);
