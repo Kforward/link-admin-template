@@ -9,7 +9,7 @@ function createCube() {
   const cubeMesh = new Mesh(geometry, material);
 
   // 旋转网格对象
-  cubeMesh.rotation.set(-0.5, -0.1, 0.8);
+  // cubeMesh.rotation.set(-0.5, -0.1, 0.8);
 
   // 将度数 转为 弧度
   const radiansPerSecond = MathUtils.degToRad(30);

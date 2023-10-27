@@ -38,7 +38,7 @@ class World {
     });
 
     // 创建灯光
-    const light = createLights();
+    const { ambientLight, mainLight } = createLights();
 
     // 创建 cube 网格
     const cube = createCube();
@@ -51,7 +51,7 @@ class World {
 
     // 添加多个网格对象使用 "," 分割
     // this.#scene.add(cube, cube2, light);
-    this.#scene.add(cube, light);
+    this.#scene.add(cube, ambientLight, mainLight);
 
     // 创建 Resizer 控制器
     new Resizer(this.#container, this.#camera, this.#renderer);
