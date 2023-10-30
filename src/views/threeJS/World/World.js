@@ -60,7 +60,7 @@ class World {
     // 将 cube 网格添加至动画动画列表中
     // this.#loop.updatables.push(cube);
 
-    // 网格组
+    // 网格动画组
     // this.#loop.updatables.push(controls, meshGroup);
     this.#loop.updatables.push(controls, meshTrain);
 
