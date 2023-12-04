@@ -8,8 +8,9 @@ import { World } from "./World/World.js";
 
 const threeContainerRef = ref("");
 
-onMounted(() => {
+onMounted(async () => {
   const world = new World(threeContainerRef.value);
+  await world.asyncRender();
   world.start();
   // world.render();
 });

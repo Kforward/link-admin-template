@@ -4,7 +4,8 @@ import { createLights } from "./components/lights.js";
 import { createAxesHelper, createGridHelper } from "./components/helpers";
 // import { createCube } from "./components/cube.js";
 // import { createMeshGroup } from "./components/meshGroup.js";
-import { Train } from "./components/Train/Train.ts";
+// import { Train } from "./components/Train/Train.ts";
+import { loadBirds } from "./components/birds/birds.ts";
 
 import { createControls } from "./systems/controls.js";
 import { createRenderer } from "./systems/renderer.js";
@@ -54,15 +55,16 @@ class World {
     // 创建 createMeshGroup
     // const meshGroup = createMeshGroup();
 
-    //
-    const meshTrain = new Train();
+    // 添加火车网格
+    // const meshTrain = new Train();
 
     // 将 cube 网格添加至动画动画列表中
     // this.#loop.updatables.push(cube);
 
     // 网格动画组
     // this.#loop.updatables.push(controls, meshGroup);
-    this.#loop.updatables.push(controls, meshTrain);
+    // this.#loop.updatables.push(controls, meshTrain);
+    this.#loop.updatables.push(controls);
 
     // 添加多个网格对象使用 "," 分割
     // this.#scene.add(cube, cube2, light);
@@ -70,7 +72,8 @@ class World {
 
     // 将网格组添加至场景中
     // this.#scene.add(meshGroup, ambientLight, mainLight);
-    this.#scene.add(meshTrain, ambientLight, mainLight);
+    // this.#scene.add(meshTrain, ambientLight, mainLight);
+    this.#scene.add(ambientLight, mainLight);
 
     // 创建 Resizer 控制器
     new Resizer(this.#container, this.#camera, this.#renderer);
@@ -80,6 +83,12 @@ class World {
     // resizer.onResize = () => {
     //   this.render();
     // };
+  }
+
+  async asyncRender() {
+    const { parrot, flamingo, stork } = await loadBirds();
+
+    this.#scene.add(parrot, flamingo, stork);
   }
 
   // 2、渲染场景 单侦渲染
