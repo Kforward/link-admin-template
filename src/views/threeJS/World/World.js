@@ -18,6 +18,7 @@ class World {
   #scene;
   #renderer;
   #loop;
+  #controls;
 
   // 1、创建类实例
   constructor(container) {
@@ -31,16 +32,14 @@ class World {
     this.#container.append(this.#renderer.domElement);
 
     this.#init();
-
-    // 为场景创建辅助线
-    this.#scene.add(createAxesHelper(), createGridHelper());
   }
 
   #init() {
     // 创建控件
-    const controls = createControls(this.#camera, this.#renderer.domElement);
+    // const controls = createControls(this.#camera, this.#renderer.domElement);
+    this.#controls = createControls(this.#camera, this.#renderer.domElement);
 
-    controls.addEventListener("change", () => {
+    this.#controls.addEventListener("change", () => {
       this.render();
     });
 
@@ -64,7 +63,7 @@ class World {
     // 网格动画组
     // this.#loop.updatables.push(controls, meshGroup);
     // this.#loop.updatables.push(controls, meshTrain);
-    this.#loop.updatables.push(controls);
+    // this.#loop.updatables.push(controls);
 
     // 添加多个网格对象使用 "," 分割
     // this.#scene.add(cube, cube2, light);
@@ -88,6 +87,10 @@ class World {
   async asyncRender() {
     const { parrot, flamingo, stork } = await loadBirds();
 
+    this.#controls.target.copy(parrot.position);
+
+    this.#loop.updatables.push(parrot, flamingo, stork);
+
     this.#scene.add(parrot, flamingo, stork);
   }
 
@@ -103,6 +106,11 @@ class World {
 
   stop() {
     this.#loop.stop();
+  }
+
+  openHelp() {
+    // 为场景创建辅助线
+    this.#scene.add(createAxesHelper(), createGridHelper());
   }
 }
 

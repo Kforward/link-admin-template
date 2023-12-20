@@ -8,6 +8,8 @@ export declare class World {
   start(): void;
 
   stop(): void;
+
+  openHelp(): void;
 }
 
 export {};
