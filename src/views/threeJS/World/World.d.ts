@@ -10,6 +10,8 @@ export declare class World {
   stop(): void;
 
   openHelp(): void;
+
+  eventHandler(): void;
 }
 
 export {};

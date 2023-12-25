@@ -11,6 +11,7 @@ import { createControls } from "./systems/controls.js";
 import { createRenderer } from "./systems/renderer.js";
 import { Resizer } from "./systems/Resizer.js";
 import { Loop } from "./systems/Loop.js";
+import { clickHandler } from "./components/eventHandler.js";
 
 class World {
   #container;
@@ -82,6 +83,8 @@ class World {
     // resizer.onResize = () => {
     //   this.render();
     // };
+
+    clickHandler(this.#container, this.#scene);
   }
 
   async asyncRender() {
