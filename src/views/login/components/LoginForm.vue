@@ -28,40 +28,39 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from "vue";
-import { useRouter } from "vue-router";
-import { HOME_URL } from "@/config";
-import { getTimeState } from "@/utils";
-// import { Login } from "@/api/interface";
-import { ElNotification } from "element-plus";
-// import { loginApi } from "@/api/modules/login";
-// import { useUserStore } from "@/stores/modules/user";
-import { useTabsStore } from "@/stores/modules/tabs";
-import { useKeepAliveStore } from "@/stores/modules/keepAlive";
-import { initDynamicRouter } from "@/routers/modules/dynamicRouter";
+import { ref, reactive } from "vue";
+// import { useRouter } from "vue-router";
+// import { HOME_URL } from "@/config";
+// import { getTimeState } from "@/utils";
+// // import { Login } from "@/api/interface";
+// import { ElNotification } from "element-plus";
+// // import { loginApi } from "@/api/modules/login";
+// // import { useUserStore } from "@/stores/modules/user";
+// import { useTabsStore } from "@/stores/modules/tabs";
+// import { useKeepAliveStore } from "@/stores/modules/keepAlive";
+// import { initDynamicRouter } from "@/routers/modules/dynamicRouter";
 import { CircleClose, UserFilled } from "@element-plus/icons-vue";
 import type { ElForm } from "element-plus";
-// import md5 from "md5";
-
-const router = useRouter();
-// const userStore = useUserStore();
-const tabsStore = useTabsStore();
-const keepAliveStore = useKeepAliveStore();
-
+// // import md5 from "md5";
+//
+// const router = useRouter();
+// // const userStore = useUserStore();
+// const tabsStore = useTabsStore();
+// const keepAliveStore = useKeepAliveStore();
+//
 type FormInstance = InstanceType<typeof ElForm>;
 const loginFormRef = ref<FormInstance>();
 const loginRules = reactive({
   username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
   password: [{ required: true, message: "请输入密码", trigger: "blur" }]
 });
-
+//
 const loading = ref(false);
-// eslint-disable-next-line no-undef
-const loginForm = reactive<Login.ReqLoginForm>({
+const loginForm = reactive<any>({
   username: "",
   password: ""
 });
-
+//
 // login
 const login = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
@@ -72,44 +71,41 @@ const login = (formEl: FormInstance | undefined) => {
       // 1.执行登录接口
       // const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
       // userStore.setToken(data.access_token);
-
       // 2.添加动态路由
-      await initDynamicRouter();
-
+      // await initDynamicRouter();
       // 3.清空 tabs、keepAlive 数据
-      tabsStore.closeMultipleTab();
-      keepAliveStore.setKeepAliveName();
-
+      // tabsStore.closeMultipleTab();
+      // keepAliveStore.setKeepAliveName();
       // 4.跳转到首页
-      router.push(HOME_URL);
-      ElNotification({
-        title: getTimeState(),
-        message: "欢迎登录 Geeker-Admin",
-        type: "success",
-        duration: 3000
-      });
+      // router.push(HOME_URL);
+      // ElNotification({
+      //   title: getTimeState(),
+      //   message: "欢迎登录 Geeker-Admin",
+      //   type: "success",
+      //   duration: 3000
+      // });
     } finally {
-      loading.value = false;
+      //   loading.value = false;
     }
   });
 };
-
+//
 // resetForm
 const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   formEl.resetFields();
 };
-
-onMounted(() => {
-  // 监听 enter 事件（调用登录）
-  document.onkeydown = (e: KeyboardEvent) => {
-    e = (window.event as KeyboardEvent) || e;
-    if (e.code === "Enter" || e.code === "enter" || e.code === "NumpadEnter") {
-      if (loading.value) return;
-      login(loginFormRef.value);
-    }
-  };
-});
+//
+// onMounted(() => {
+//   // 监听 enter 事件（调用登录）
+//   document.onkeydown = (e: KeyboardEvent) => {
+//     e = (window.event as KeyboardEvent) || e;
+//     if (e.code === "Enter" || e.code === "enter" || e.code === "NumpadEnter") {
+//       if (loading.value) return;
+//       login(loginFormRef.value);
+//     }
+//   };
+// });
 </script>
 
 <style scoped lang="scss">
