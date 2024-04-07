@@ -24,3 +24,37 @@ export interface GlobalState {
   tabsIcon: boolean;
   footer: boolean;
 }
+
+/* UserState */
+export interface UserState {
+  token: string;
+  userInfo: { name: string };
+}
+
+/* TabsState */
+export interface TabsState {
+  tabsMenuList: TabsMenuProps[];
+}
+
+/* tabsMenuProps */
+export interface TabsMenuProps {
+  icon: string;
+  title: string;
+  path: string;
+  name: string;
+  close: boolean;
+}
+
+/* KeepAliveState */
+export interface KeepAliveState {
+  keepAliveName: string[];
+}
+
+/* AuthState */
+export interface AuthState {
+  routeName: string;
+  authButtonList: {
+    [key: string]: string[];
+  };
+  authMenuList: Menu.MenuOptions[];
+}

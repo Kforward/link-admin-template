@@ -1,1 +1,1 @@
-import { createApp } from "vue";import App from "./App.vue";import "./styles/style.css";// svg iconsimport "virtual:svg-icons-register";const app = createApp(App);app.mount("#app");
+import { createApp } from "vue";import App from "./App.vue";import "./styles/style.css";// svg iconsimport "virtual:svg-icons-register";// pinia storeimport pinia from "@/stores";// vue i18nimport I18n from "@/languages/index";import { router } from "@/routers/index.ts";const app = createApp(App);app.use(pinia).use(I18n).use(router).mount("#app");
