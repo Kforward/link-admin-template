@@ -1,4 +1,4 @@
-import router from "@/routers";
+import { router } from "@/routers";
 import { defineStore } from "pinia";
 import { TabsState, TabsMenuProps } from "@/stores/interface";
 import piniaPersistConfig from "@/config/piniaPersist";
@@ -40,14 +40,14 @@ export const useTabsStore = defineStore({
           return index < range[0] || index >= range[1] || !item.close;
         });
       }
-      keepAliveStore.setKeepAliveName(this.tabsMenuList.map(item => item.name));
+      await keepAliveStore.setKeepAliveName(this.tabsMenuList.map(item => item.name));
     },
     // Close MultipleTab
     async closeMultipleTab(tabsMenuValue?: string) {
       this.tabsMenuList = this.tabsMenuList.filter(item => {
         return item.path === tabsMenuValue || !item.close;
       });
-      keepAliveStore.setKeepAliveName(this.tabsMenuList.map(item => item.name));
+      await keepAliveStore.setKeepAliveName(this.tabsMenuList.map(item => item.name));
     },
     // Set Tabs
     async setTabs(tabsMenuList: TabsMenuProps[]) {
