@@ -28,12 +28,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
-// import { useRouter } from "vue-router";
-// import { HOME_URL } from "@/config";
-// import { getTimeState } from "@/utils";
+import { ref, reactive, onMounted } from "vue";
+import { useRouter } from "vue-router";
+import { HOME_URL } from "@/config";
+import { getTimeState } from "@/utils";
 // // import { Login } from "@/api/interface";
-// import { ElNotification } from "element-plus";
+import { ElNotification } from "element-plus";
 // // import { loginApi } from "@/api/modules/login";
 // // import { useUserStore } from "@/stores/modules/user";
 // import { useTabsStore } from "@/stores/modules/tabs";
@@ -43,7 +43,7 @@ import { CircleClose, UserFilled } from "@element-plus/icons-vue";
 import type { ElForm } from "element-plus";
 // // import md5 from "md5";
 //
-// const router = useRouter();
+const router = useRouter();
 // // const userStore = useUserStore();
 // const tabsStore = useTabsStore();
 // const keepAliveStore = useKeepAliveStore();
@@ -57,8 +57,8 @@ const loginRules = reactive({
 //
 const loading = ref(false);
 const loginForm = reactive<any>({
-  username: "",
-  password: ""
+  username: "admin",
+  password: "123456"
 });
 //
 // login
@@ -77,15 +77,15 @@ const login = (formEl: FormInstance | undefined) => {
       // tabsStore.closeMultipleTab();
       // keepAliveStore.setKeepAliveName();
       // 4.跳转到首页
-      // router.push(HOME_URL);
-      // ElNotification({
-      //   title: getTimeState(),
-      //   message: "欢迎登录 Geeker-Admin",
-      //   type: "success",
-      //   duration: 3000
-      // });
+      await router.push(HOME_URL);
+      ElNotification({
+        title: getTimeState(),
+        message: "欢迎登录",
+        type: "success",
+        duration: 3000
+      });
     } finally {
-      //   loading.value = false;
+      loading.value = false;
     }
   });
 };
@@ -95,17 +95,16 @@ const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   formEl.resetFields();
 };
-//
-// onMounted(() => {
-//   // 监听 enter 事件（调用登录）
-//   document.onkeydown = (e: KeyboardEvent) => {
-//     e = (window.event as KeyboardEvent) || e;
-//     if (e.code === "Enter" || e.code === "enter" || e.code === "NumpadEnter") {
-//       if (loading.value) return;
-//       login(loginFormRef.value);
-//     }
-//   };
-// });
+onMounted(() => {
+  // 监听 enter 事件（调用登录）
+  document.onkeydown = (e: KeyboardEvent) => {
+    e = (window.event as KeyboardEvent) || e;
+    if (e.code === "Enter" || e.code === "enter" || e.code === "NumpadEnter") {
+      if (loading.value) return;
+      login(loginFormRef.value);
+    }
+  };
+});
 </script>
 
 <style scoped lang="scss">
