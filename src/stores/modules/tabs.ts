@@ -1,4 +1,4 @@
-import { router } from "@/routers";
+import router from "@/routers";
 import { defineStore } from "pinia";
 import { TabsState, TabsMenuProps } from "@/stores/interface";
 import piniaPersistConfig from "@/config/piniaPersist";
